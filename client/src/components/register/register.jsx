@@ -5,6 +5,8 @@ import Icon from "../../resources/videojuego-icon.png";
 import "./register.css";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_URL;
+
 const Register = () => {
   const navigate = useNavigate();
 
@@ -35,7 +37,7 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:3001/videogames/register", form);
+      await axios.post(`${API_URL}videogames/register`, form);
 
       alert("User created successfully");
 

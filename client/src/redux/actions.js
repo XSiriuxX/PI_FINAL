@@ -10,9 +10,11 @@ import {
   GET_FAV_BY_USERID,
 } from "./action-types";
 
+const API_URL = process.env.REACT_APP_URL;
+
 // Acción para obtener todos los videojuegos
 export const getvideogames = () => {
-  const endpoint = `http://localhost:3001/videogames/`;
+  const endpoint = `${API_URL}videogames/`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -29,7 +31,7 @@ export const getvideogames = () => {
 
 // Acción para obtener los detalles de un videojuego específico
 export const getvideogamedetail = (id) => {
-  const endpoint = `http://localhost:3001/videogames/${id}`;
+  const endpoint = `${API_URL}videogames/${id}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -46,7 +48,7 @@ export const getvideogamedetail = (id) => {
 
 // Acción para obtener 15 videojuegos filtrados por nombre
 export const getvideogamesname = (name) => {
-  const endpoint = `http://localhost:3001/videogames/name?name=${name}`;
+  const endpoint = `${API_URL}videogames/name?name=${name}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -63,7 +65,7 @@ export const getvideogamesname = (name) => {
 
 // Acción para obtener todos los generos
 export const getgenres = () => {
-  const endpoint = `http://localhost:3001/videogames/genres`;
+  const endpoint = `${API_URL}videogames/genres`;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
@@ -79,7 +81,7 @@ export const getgenres = () => {
 };
 
 export const addfavorite = (videogame) => {
-  const endpoint = "http://localhost:3001/videogames/fav";
+  const endpoint = `${API_URL}videogames/fav`;
 
   return async (dispatch) => {
     try {
@@ -96,7 +98,7 @@ export const addfavorite = (videogame) => {
 };
 
 export const deletefavorite = (id) => {
-  const endpoint = `http://localhost:3001/videogames/fav/${id}`;
+  const endpoint = `${API_URL}videogames/fav/${id}`;
   return async (dispatch) => {
     try {
       const { data } = await axios.delete(endpoint);
@@ -111,7 +113,7 @@ export const deletefavorite = (id) => {
 };
 
 export const getfavorites = (userid) => {
-  const endpoint = `http://localhost:3001/videogames/fav/${userid}`;
+  const endpoint = `${API_URL}videogames/fav/${userid}`;
 
   return async (dispatch) => {
     try {
