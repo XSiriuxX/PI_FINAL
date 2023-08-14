@@ -53,6 +53,8 @@ const Detail = () => {
       .replace(/<br ?\/?>/g, "\n")
       .replace(/<\/?h1>/g, "")
       .replace(/<\/?h2>/g, "")
+      .replace(/<\/?h3>/g, "")
+      .replace(/<\/?h4>/g, "")
       .replace(/<\/?ul>/g, "")
       .replace(/<\/?li>/g, "")
       .replace(/<\/?em>/g, "");
