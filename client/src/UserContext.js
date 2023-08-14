@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const API_URL = process.env.REACT_APP_URL;
 
 const UserContext = createContext();
 
@@ -11,7 +12,7 @@ export const UserProvider = ({ children }) => {
 
   const login = async (user) => {
     try {
-      const endpoint = "http://localhost:3001/videogames/login";
+      const endpoint = `${API_URL}videogames/login`;
 
       const { email, password } = user;
       const { data } = await axios(
