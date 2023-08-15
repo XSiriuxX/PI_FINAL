@@ -1,4 +1,4 @@
-
+const bcrypt = require("bcrypt");
 const { User } = require("../db");
 
 const postnewuser = async (req, res) => {
@@ -7,7 +7,13 @@ const postnewuser = async (req, res) => {
 
     if (!email || !password) return res.status(400).send("Faltan datos");
 
-    const user = await User.findOrCreate({ where: { email, password } });
+    //hasheado para la contraseña
+    const saltRounds = 10;
+    const hashedpassword = await bcrypt.hash(password, saltRounds);
+
+    const user = await User.findOrCreate({
+      where: { email, password: hashedpassword },
+    });
 
     return res.status(200).json(user);
   } catch (error) {
