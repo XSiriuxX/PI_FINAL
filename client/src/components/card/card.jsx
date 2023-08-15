@@ -89,24 +89,24 @@ const Card = ({
 
   const getPlatformIcon = (platforms) => {
     const platformsstring = Array.isArray(platforms)
-      ? platforms.join(", ")
-      : platforms;
+      ? platforms.join(", ").toLowerCase()
+      : platforms.toLowerCase();
 
     const platformIcons = [];
 
-    if (platformsstring.includes("PlayStation")) {
+    if (platformsstring.includes("playstation")) {
       platformIcons.push(psIcon);
     }
-    if (platformsstring.includes("Xbox")) {
+    if (platformsstring.includes("xbox")) {
       platformIcons.push(xboxIcon);
     }
-    if (platformsstring.includes("PC")) {
+    if (platformsstring.includes("pc")) {
       platformIcons.push(pcIcon);
     }
-    if (platformsstring.includes("Android")) {
+    if (platformsstring.includes("android")) {
       platformIcons.push(androidIcon);
     }
-    if (platformsstring.includes("Nintendo")) {
+    if (platformsstring.includes("nintendo")) {
       platformIcons.push(nintendoIcon);
     }
 

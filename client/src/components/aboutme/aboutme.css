@@ -7,13 +7,13 @@
 
 .about-container {
   display: flex;
-  margin-top: 10vh;
+  margin-top: 5vh;
   display: flex;
   border-radius: 10px;
   width: 90%;
   max-width: 2000px;
-  height: 80%;
-  max-height: 2000px;
+  height: 75%;
+  max-height: 2500px;
   background: linear-gradient(290deg, #f45229cd, #8d0b53c5, #190114c0);
   color: white;
   align-items: center;
@@ -63,7 +63,7 @@
 
 .about-button {
   position: absolute;
-  bottom: 260px;
+  top: -350px;
   left: 10px;
   background: linear-gradient(180deg, #000000bc, #190114c5);
   color: white;
@@ -81,14 +81,18 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .about-container {
     flex-direction: column;
     align-items: center;
-    height: 85vh;
     overflow-wrap: break-word; /* Para ajustar las palabras en caso de que el texto sea largo */
     hyphens: auto;
-    font-size: 5vw;
+  }
+
+  .about-content {
+    font-size: 20px;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .about-left h1,
@@ -100,11 +104,12 @@
   }
 
   .about-image {
-    height: 80%;
+    height: 100%;
     width: 100%;
   }
 
   .about-content {
-    width: 80%;
+    width: 90%;
+    margin-right: 40px;
   }
 }

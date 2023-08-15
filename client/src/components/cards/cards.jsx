@@ -22,6 +22,7 @@ const Cards = ({ userid, sortOption, selectedGenres, selectedOrigin }) => {
         dispatch(getvideogames()),
         dispatch(getfavorites(userid)),
       ]);
+      
       setIsLoading(false);
     };
 
