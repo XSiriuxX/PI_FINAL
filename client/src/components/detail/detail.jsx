@@ -124,7 +124,6 @@ const Detail = () => {
     );
   };
 
-  console.log(videogamedetail);
   return (
     <div className="detail-general">
       {isLoading ? (
