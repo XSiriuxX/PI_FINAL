@@ -7,13 +7,15 @@ const postfav = async (req, res) => {
       req.body;
 
     if (!id || !name || !platforms || !image || !releasedate) {
-      return res.status(400).send("Faltan datos");
+      return res.status(400).send("Missing credentials");
     }
 
+    // Verifica si el userid está presente en el cuerpo
     if (!userid) {
-      return res.status(400).send("falta el userid");
+      return res.status(400).send("Missing Userid");
     }
 
+    // Crea un nuevo registro favorito en la base de datos
     const newfavorite = await Favorite.create({
       userid,
       id: id.toString(),
@@ -24,13 +26,15 @@ const postfav = async (req, res) => {
       rating,
     });
 
+    // Busca el usuario por su ID
     const userfind = await User.findAll({ where: { id: userid } });
 
+    // Asocia el nuevo favorito con el usuario encontrado
     await newfavorite.addUsers(userfind);
 
     const allfav = await Favorite.findAll();
 
-    return res.status(200).json(allfav);
+    return res.status(201).json(allfav);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

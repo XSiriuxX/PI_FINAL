@@ -9,16 +9,16 @@ const getbynamevideogames = async (req, res) => {
   try {
     const { name } = req.query;
 
-    // Verificar si se proporcionó correctamente el parámetro "name" en la query
     if (!name) {
-      throw new Error('Ingresa el "name" como parametro en la query.');
+      throw new Error('Please provide the "name" parameter in the query.');
     }
 
+    //Buscar el nombre en al DB
     const videogame = await Videogame.findOne({
       where: { name: { [Op.iLike]: `%${name}%` } },
     });
 
-    // Realizar la solicitud a la API externa para obtener videojuegos filtrados por el nombre
+    // Realizar la solicitud a la API
     const response = await axios.get(`${url}?key=${API_KEY}&search=${name}`);
 
     // Filtrar los videojuegos encontrados que coinciden solo 15 con el nombre proporcionado
@@ -26,7 +26,7 @@ const getbynamevideogames = async (req, res) => {
       .filter((game) => game.name.toLowerCase().includes(name.toLowerCase()))
       .slice(0, 15);
 
-    // Mapear los datos de los videojuegos filtrados para obtener una lista con la información requerida
+    // Mapear los datos de los videojuegos filtrados para obtener una lista
     const videoGames = filtrados.map((data) => ({
       id: data.id,
       name: data.name,
@@ -53,13 +53,13 @@ const getbynamevideogames = async (req, res) => {
     // Si no se encontraron videojuegos que coincidan con el nombre, devolver un mensaje de error 404
     if (videoGames.length === 0) {
       return res.status(404).json({
-        message: `No se encontraron videojuegos con el nombre ${name}`,
+        message: `No video games found with the name ${name}`,
       });
     }
 
     res.status(200).json(videoGames);
   } catch (error) {
-    res.status(500).json({ error: "Hubo un error interno en el servidor." });
+    res.status(500).json({ error: "Internal server error." });
   }
 };
 

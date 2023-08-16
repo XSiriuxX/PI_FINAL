@@ -13,6 +13,7 @@ const Cards = ({ userid, sortOption, selectedGenres, selectedOrigin }) => {
   // Obtener el estado de los videojuegos desde Redux
   const videogames = useSelector((state) => state.videogames);
   const myfavorites = useSelector((state) => state.myfavorites);
+
   const [isLoading, setIsLoading] = useState(true);
 
   // Efecto para obtener los videojuegos cuando el componente se monta o actualiza
@@ -22,7 +23,7 @@ const Cards = ({ userid, sortOption, selectedGenres, selectedOrigin }) => {
         dispatch(getvideogames()),
         dispatch(getfavorites(userid)),
       ]);
-      
+
       setIsLoading(false);
     };
 

@@ -6,7 +6,6 @@ const postvideogames = async (req, res) => {
     const { name, description, platforms, image, releasedate, rating, genres } =
       req.body;
 
-    // Verificar si algún campo requerido está vacío o no se proporcionó
     if (
       !name ||
       !description ||
@@ -32,7 +31,7 @@ const postvideogames = async (req, res) => {
 
     // Si ya existe un registro con los mismos name y description, devolver un mensaje de error
     if (existingVideogame) {
-      return res.status(400).json({ message: "El objeto ya está creado." });
+      return res.status(400).json({ message: "The object already exists." });
     }
 
     // Generar un UUID único para el nuevo videojuego
@@ -52,13 +51,12 @@ const postvideogames = async (req, res) => {
       image,
       releasedate,
       rating,
-      gamegenres: genres,
     });
 
     // Asociar los géneros encontrados al nuevo videojuego
     await videogame.addGenres(selectedGenres);
 
-    return res.status(200).json(videogame);
+    return res.status(201).json(videogame);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

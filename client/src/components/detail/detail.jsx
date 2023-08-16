@@ -34,6 +34,7 @@ const Detail = () => {
     return () => dispatch(cleandetail());
   }, [id, dispatch]);
 
+  //Arreglar el texto de la descripcion
   const processDescription = (description) => {
     if (!description) {
       return null;
@@ -64,6 +65,7 @@ const Detail = () => {
     return paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>);
   };
 
+  // Renderizar las estrellas
   const renderStars = () => {
     const maxRating = 5;
     const filledStars = Math.floor(videogamedetail.rating);
@@ -89,6 +91,7 @@ const Detail = () => {
     return stars;
   };
 
+  // Renderizar iconos de plataformas
   const getPlatformIcon = (platforms) => {
     const platformsstring = Array.isArray(platforms)
       ? platforms.join(", ").toLowerCase()
@@ -169,11 +172,9 @@ const Detail = () => {
             </p>
             <div>
               <span style={{ "font-weight": "bold" }}>Genres: </span>
-              {videogamedetail.gamegenres || videogamedetail.genres
-                ? (videogamedetail.gamegenres || videogamedetail.genres).map(
-                    (genre) => <span key={genre}> {genre}</span>
-                  )
-                : ""}
+              {videogamedetail.genres.map((genre) => (
+                <span key={genre}> {genre}</span>
+              ))}
             </div>
           </div>
         </div>

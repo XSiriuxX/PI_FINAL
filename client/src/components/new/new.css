@@ -1,7 +1,6 @@
 /* Estilos generales para el formulario */
 .form-general {
-  height: 100vh;
-  background: linear-gradient(180deg, #6b1500, #56002f, #000000);
+  height: 110vh;
 }
 
 .page-container {
@@ -18,7 +17,7 @@
   margin: auto;
   width: 1500px;
   min-height: 70vh;
-  max-height: 90vh;
+  max-height: 100vh;
   margin-top: 10vh;
   background: linear-gradient(290deg, #f45229cd, #8d0b53c5, #190114c0);
   color: white;

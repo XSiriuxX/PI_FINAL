@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 
 const Sidebar = ({ showSidebar, toggleSidebar }) => {
-  const handlelogout = () => {};
-
   return (
     <div className={`sidebar ${showSidebar ? "active" : ""}`}>
       <div className="sidebar-content">
@@ -21,7 +19,7 @@ const Sidebar = ({ showSidebar, toggleSidebar }) => {
           <p>ABOUT ME</p>
         </Link>
       </div>
-      <div onClick={handlelogout} className="logout">
+      <div className="logout">
         <Link to={"/"}>
           <p>LOG OUT</p>
         </Link>

@@ -16,19 +16,22 @@ import Favorites from "./components/favorites/favorites";
 import { UserProvider } from "./UserContext";
 
 function App() {
+  // Obtiene la ruta actual del navegador
   const { pathname } = useLocation();
 
+  // Función para alternar la visibilidad de la barra lateral
   const [showSidebar, setShowSidebar] = useState(false);
-
   const toggleSidebar = () => {
     setShowSidebar((prevState) => !prevState);
   };
 
+  // Verifica si la ruta actual es diferente de las excepciones
   const exceps =
     pathname !== "/" && pathname !== "/login" && pathname !== "/register";
 
   return (
     <div className="App">
+      {/* Renderiza la barra de navegación y la barra lateral */}
       {exceps && (
         <div className="app-container">
           <Nav showSidebar={showSidebar} toggleSidebar={toggleSidebar} />
@@ -49,6 +52,7 @@ function App() {
         </Routes>
       </UserProvider>
 
+      {/* Renderiza el pie de página */}
       {exceps && (
         <div className="app-container">
           <Fotter />

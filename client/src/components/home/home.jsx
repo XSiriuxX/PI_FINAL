@@ -17,18 +17,22 @@ const Home = () => {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [showGenreMenu, setShowGenreMenu] = useState(false);
 
+  // Obtener los géneros cuando se carga el componente
   useEffect(() => {
     dispatch(getgenres());
   }, [dispatch]);
 
+  // Manejar cambios en la opción de clasificación
   const handleSortChange = (event) => {
     setSortOption(event.target.value);
   };
 
+  // Manejar cambios en la opción de origen
   const handleOriginChange = (event) => {
     setSelectedOrigin(event.target.value);
   };
 
+  // Manejar cambios en los géneros seleccionados
   const handleGenreChange = (event) => {
     const genreName = event.target.value;
     if (selectedGenres.includes(genreName)) {

@@ -80,6 +80,7 @@ export const getgenres = () => {
   };
 };
 
+// Acción para agregar un videojuego a favoritos
 export const addfavorite = (videogame) => {
   const endpoint = `${API_URL}videogames/fav`;
 
@@ -97,6 +98,7 @@ export const addfavorite = (videogame) => {
   };
 };
 
+// Acción para eliminar un videojuego de favoritos
 export const deletefavorite = (id) => {
   const endpoint = `${API_URL}videogames/fav/${id}`;
   return async (dispatch) => {
@@ -112,6 +114,7 @@ export const deletefavorite = (id) => {
   };
 };
 
+// Acción para obtener los videojuegos favoritos de un usuario
 export const getfavorites = (userid) => {
   const endpoint = `${API_URL}videogames/fav/${userid}`;
 

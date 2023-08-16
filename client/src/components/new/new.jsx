@@ -46,7 +46,7 @@ const New = () => {
     const value = event.target.value;
     setForm({ ...form, [name]: value });
 
-    // Validación por campo: Se llama a la función 'validation' para validar el campo modificado
+    // Validación por campo
     newvalidation({ ...form, [name]: value }, errors, setErrors);
   };
 
@@ -66,7 +66,7 @@ const New = () => {
 
     setForm({ ...form, genres: updatedGenres });
 
-    // Validación por campo: Se llama a la función 'newvalidation' para validar los géneros seleccionados
+    // Validación por campo
     newvalidation({ ...form, genres: updatedGenres }, errors, setErrors);
 
     // Validación adicional para verificar que al menos un género esté seleccionado
@@ -79,8 +79,6 @@ const New = () => {
     } else {
       setErrors((errors) => ({ ...errors, genres: "" }));
     }
-
-    console.log(updatedGenres);
   };
 
   // Función que se ejecuta cuando se envía el formulario
@@ -96,7 +94,7 @@ const New = () => {
       // Navegar a la ruta "/detail" del videojuego creado después de enviar el formulario
       navigate(`/detail/${response.data.id}`);
     } catch (error) {
-      alert("Error en la solicitud");
+      alert("Error");
     }
   };
 
@@ -144,19 +142,20 @@ const New = () => {
               required
             />
             {errors.releasedate && <p>{errors.releasedate}</p>}
-
-            <label for="rating">RATING:</label>
-            <input
-              type="number"
-              name="rating"
-              min="0"
-              max="5"
-              step="0.1"
-              value={form.rating}
-              onChange={handleChange}
-              required
-            />
-            {errors.rating && <p>{errors.rating}</p>}
+            <div>
+              <label for="rating">RATING:</label>
+              <input
+                type="number"
+                name="rating"
+                min="0"
+                max="5"
+                step="0.1"
+                value={form.rating}
+                onChange={handleChange}
+                required
+              />
+              {errors.rating && <p>{errors.rating}</p>}
+            </div>
           </div>
 
           <div className="form-right">

@@ -28,14 +28,15 @@ const Form = () => {
     const value = event.target.value;
     setForm({ ...form, [name]: value });
 
-    // Validación por campo: Se llama a la función 'validation' para validar el campo modificado
+    // Validación por campo
     formvalidation({ ...form, [name]: value }, errors, setErrors);
   };
 
+  // Estado para controlar el acceso
   const [access, setAccess] = useState(false);
-
   const [loginn, setLoginn] = useState("");
 
+  // Redirecciona a la página de inicio después de un inicio de sesión exitoso
   useEffect(() => {
     !access && navigate("/login");
   }, [access, navigate]);

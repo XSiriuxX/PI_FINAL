@@ -5,6 +5,7 @@ import { useUserContext } from "../../UserContext";
 const Favorites = ({ myfavorites }) => {
   const { userid } = useUserContext();
 
+  // Filtra los favoritos del usuario actual
   const userFavorites = myfavorites.filter(
     (favorite) => favorite.userid === userid
   );

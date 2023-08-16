@@ -22,6 +22,18 @@ const Card = ({
   deletefavorite,
   myfavorites,
 }) => {
+  const [isFav, setisFav] = useState(false);
+
+  // Verificar si el videojuego es favorito
+  useEffect(() => {
+    myfavorites.forEach((fav) => {
+      if (fav.id == id && fav.userid === userid) {
+        setisFav(true);
+      }
+    });
+  }, [myfavorites, id, userid]);
+
+  // Renderizar las estrellas
   const renderStars = () => {
     const maxRating = 5;
     const filledStars = Math.floor(rating);
@@ -47,16 +59,7 @@ const Card = ({
     return stars;
   };
 
-  const [isFav, setisFav] = useState(false);
-
-  useEffect(() => {
-    myfavorites.forEach((fav) => {
-      if (fav.id === id && fav.userid === userid) {
-        setisFav(true);
-      }
-    });
-  }, [myfavorites, id, userid]);
-
+  // Manejar la acción de agregar/quitar favorito
   const handleFavorite = () => {
     if (isFav) {
       setisFav(false);
@@ -79,14 +82,7 @@ const Card = ({
     }
   };
 
-  useEffect(() => {
-    myfavorites.forEach((fav) => {
-      if (fav.id == id) {
-        setisFav(true);
-      }
-    });
-  }, [myfavorites, id]);
-
+  // Renderizar iconos de plataformas
   const getPlatformIcon = (platforms) => {
     const platformsstring = Array.isArray(platforms)
       ? platforms.join(", ").toLowerCase()
